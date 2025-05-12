@@ -1,10 +1,15 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { fetchCarsThunk, fetchCarByIdThunk, bookCarThunk } from "./operations";
+import {
+  fetchCarsThunk,
+  fetchCarByIdThunk,
+  fetchBrandsThunk,
+} from "./operations";
 
 const initialState = {
   cars: [],
   currentCar: null,
   favorites: JSON.parse(localStorage.getItem("favorites")) || [],
+  brands: [],
   filters: {
     brand: "",
     rentalPrice: "",
@@ -12,7 +17,8 @@ const initialState = {
     maxMileage: "",
   },
   page: 1,
-  totalPages: 0, // Додаємо для зберігання загальної кількості сторінок
+  totalPages: 0,
+  showFavorites: false,
   isLoading: false,
   isError: null,
 };
@@ -21,7 +27,7 @@ const carsSlice = createSlice({
   name: "cars",
   initialState,
   reducers: {
-    toggleFavorite: (state, action) => {
+    addOrRemoveFromFavorites: (state, action) => {
       const carId = action.payload;
       const isFavorite = state.favorites.includes(carId);
       if (isFavorite) {
@@ -47,16 +53,19 @@ const carsSlice = createSlice({
     incrementPage: (state) => {
       state.page += 1;
     },
+    setShowFavoritesMode: (state) => {
+      state.showFavorites = !state.showFavorites;
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCarsThunk.fulfilled, (state, action) => {
         if (state.page === 1) {
-          state.cars = action.payload.cars; // Оновлюємо список авто
+          state.cars = action.payload.cars;
         } else {
-          state.cars = [...state.cars, ...action.payload.cars]; // Додаємо нові авто для пагінації
+          state.cars = [...state.cars, ...action.payload.cars];
         }
-        state.totalPages = action.payload.totalPages; // Зберігаємо загальну кількість сторінок
+        state.totalPages = action.payload.totalPages;
         state.isLoading = false;
         state.isError = null;
       })
@@ -65,8 +74,8 @@ const carsSlice = createSlice({
         state.isLoading = false;
         state.isError = null;
       })
-      // eslint-disable-next-line no-unused-vars
-      .addCase(bookCarThunk.fulfilled, (state, _action) => {
+      .addCase(fetchBrandsThunk.fulfilled, (state, action) => {
+        state.brands = action.payload;
         state.isLoading = false;
         state.isError = null;
       })
@@ -74,7 +83,7 @@ const carsSlice = createSlice({
         isAnyOf(
           fetchCarsThunk.pending,
           fetchCarByIdThunk.pending,
-          bookCarThunk.pending
+          fetchBrandsThunk.pending
         ),
         (state) => {
           state.isLoading = true;
@@ -85,7 +94,7 @@ const carsSlice = createSlice({
         isAnyOf(
           fetchCarsThunk.rejected,
           fetchCarByIdThunk.rejected,
-          bookCarThunk.rejected
+          fetchBrandsThunk.rejected
         ),
         (state, action) => {
           state.isLoading = false;
@@ -95,6 +104,11 @@ const carsSlice = createSlice({
   },
 });
 
-export const { toggleFavorite, setFilters, clearFilters, incrementPage } =
-  carsSlice.actions;
+export const {
+  addOrRemoveFromFavorites,
+  setFilters,
+  clearFilters,
+  incrementPage,
+  setShowFavoritesMode,
+} = carsSlice.actions;
 export const carsReducer = carsSlice.reducer;

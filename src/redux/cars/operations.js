@@ -5,6 +5,19 @@ const API = axios.create({
   baseURL: "https://car-rental-api.goit.global",
 });
 
+// Отримання списку брендів
+export const fetchBrandsThunk = createAsyncThunk(
+  "cars/fetchBrands",
+  async (_, thunkAPI) => {
+    try {
+      const response = await API.get("/brands");
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 // Отримання списку автомобілів із пагінацією та фільтрами
 export const fetchCarsThunk = createAsyncThunk(
   "cars/fetchCars",
@@ -33,19 +46,6 @@ export const fetchCarByIdThunk = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const response = await API.get(`/cars/${id}`);
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
-// Бронювання автомобіля
-export const bookCarThunk = createAsyncThunk(
-  "cars/bookCar",
-  async ({ carId, bookingData }, thunkAPI) => {
-    try {
-      const response = await API.post(`/bookings`, { carId, ...bookingData });
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
