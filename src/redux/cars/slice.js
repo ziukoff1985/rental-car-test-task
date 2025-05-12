@@ -7,11 +7,12 @@ const initialState = {
   favorites: JSON.parse(localStorage.getItem("favorites")) || [],
   filters: {
     brand: "",
-    rentalPrice: "", // Оновлено з price
-    minMileage: "", // Оновлено з mileageFrom
-    maxMileage: "", // Оновлено з mileageTo
+    rentalPrice: "",
+    minMileage: "",
+    maxMileage: "",
   },
   page: 1,
+  totalPages: 0, // Додаємо для зберігання загальної кількості сторінок
   isLoading: false,
   isError: null,
 };
@@ -32,7 +33,7 @@ const carsSlice = createSlice({
     },
     setFilters: (state, action) => {
       state.filters = { ...state.filters, ...action.payload };
-      state.page = 1; // Скидаємо сторінку при зміні фільтрів
+      state.page = 1;
     },
     clearFilters: (state) => {
       state.filters = {
@@ -51,10 +52,11 @@ const carsSlice = createSlice({
     builder
       .addCase(fetchCarsThunk.fulfilled, (state, action) => {
         if (state.page === 1) {
-          state.cars = action.payload; // Якщо перша сторінка, замінюємо список
+          state.cars = action.payload.cars; // Оновлюємо список авто
         } else {
-          state.cars = [...state.cars, ...action.payload]; // Додаємо нові авто для пагінації
+          state.cars = [...state.cars, ...action.payload.cars]; // Додаємо нові авто для пагінації
         }
+        state.totalPages = action.payload.totalPages; // Зберігаємо загальну кількість сторінок
         state.isLoading = false;
         state.isError = null;
       })
