@@ -13,8 +13,11 @@ export const fetchCarsThunk = createAsyncThunk(
       const response = await API.get("/cars", {
         params: {
           page,
-          limit: 8,
-          ...filters,
+          limit: 12,
+          brand: filters.brand || undefined,
+          rentalPrice: filters.rentalPrice || undefined,
+          minMileage: filters.minMileage || undefined,
+          maxMileage: filters.maxMileage || undefined,
         },
       });
       return response.data;

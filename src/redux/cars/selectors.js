@@ -1,4 +1,4 @@
-import { createSelector } from "@reduxjs/toolkit";
+import { createSelector } from '@reduxjs/toolkit';
 
 export const selectCars = (state) => state.cars.cars;
 export const selectCurrentCar = (state) => state.cars.currentCar;
@@ -10,5 +10,5 @@ export const selectIsError = (state) => state.cars.isError;
 
 // Мемоізований селектор для перевірки, чи є ще авто для завантаження
 export const selectHasMoreCars = createSelector([selectCars], (cars) => {
-  return cars.length % 8 === 0 && cars.length > 0; // Якщо кількість авто кратна 8, можливо, є ще
+  return cars.length % 12 === 0 && cars.length > 0; // Якщо кількість авто кратна 12, можливо, є ще
 });
