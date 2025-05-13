@@ -1,0 +1,137 @@
+import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import {
+  selectCurrentCar,
+  selectIsLoading,
+  selectIsError,
+} from "../../redux/cars/selectors.js";
+import { fetchCarByIdThunk } from "../../redux/cars/operations.js";
+import RentalForm from "../RentalForm/RentalForm.jsx";
+import Loader from "../Loader/Loader.jsx";
+import styles from "./CarDetails.module.css";
+import sprite from "../../assets/images/icons.svg";
+
+const CarDetails = () => {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const car = useSelector(selectCurrentCar);
+  const isLoading = useSelector(selectIsLoading);
+  const isError = useSelector(selectIsError);
+
+  useEffect(() => {
+    dispatch(fetchCarByIdThunk(id));
+  }, [dispatch, id]);
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (isError) {
+    return <div className={styles.error}>Error: {isError}</div>;
+  }
+
+  if (!car) {
+    return <div className={styles.error}>Car not found</div>;
+  }
+
+  return (
+    <div className={styles.container}>
+      <div className={styles.leftColumn}>
+        <img
+          src={car.img}
+          alt={`${car.make} ${car.model}`}
+          className={styles.image}
+        />
+        <RentalForm />
+      </div>
+      <div className={styles.rightColumn}>
+        <div className={styles.carInfo}>
+          <h2
+            className={styles.carTitle}
+          >{`${car.brand} ${car.model}, ${car.year}`}</h2>
+          <p className={styles.carId}>ID: {car.id}</p>
+          <div className={styles.location}>
+            <svg className={styles.icon} width="16" height="16">
+              <use href={`${sprite}#icon-location`} />
+            </svg>
+            <p className={styles.carLocation}>Location: {car.address}</p>
+          </div>
+          <p className={styles.carMileage}>Mileage: {car.mileage} km</p>
+          <p className={styles.carPrice}>${car.rentalPrice}/hour</p>
+
+          <p className={styles.carDescription}>{car.description}</p>
+          <div className={styles.carListWrapContainer}>
+            <div className={styles.carListWrap}>
+              <h3 className={styles.carSubtitle}>Rental Conditions:</h3>
+              <ul className={styles.carList}>
+                {car.rentalConditions?.map((condition, index) => (
+                  <li key={index} className={styles.carListItem}>
+                    <svg className={styles.icon} width="16" height="16">
+                      <use href={`${sprite}#icon-check-circle`} />
+                    </svg>
+                    {condition}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className={styles.carListWrap}>
+              <h3 className={styles.carSubtitle}>Car Specifications:</h3>
+              <ul className={styles.carList}>
+                <li className={styles.carListItem}>
+                  <svg className={styles.icon} width="16" height="16">
+                    <use href={`${sprite}#icon-calendar`} />
+                  </svg>
+                  Year: {car.year}
+                </li>
+                <li className={styles.carListItem}>
+                  <svg className={styles.icon} width="16" height="16">
+                    <use href={`${sprite}#icon-car`} />
+                  </svg>
+                  Type: {car.type}
+                </li>
+                <li className={styles.carListItem}>
+                  <svg className={styles.icon} width="16" height="16">
+                    <use href={`${sprite}#icon-fuel-pump`} />
+                  </svg>
+                  Fuel Consumption: {car.fuelConsumption} L/100km
+                </li>
+                <li className={styles.carListItem}>
+                  <svg className={styles.icon} width="16" height="16">
+                    <use href={`${sprite}#icon-gear`} />
+                  </svg>
+                  Engine Size: {car.engineSize}
+                </li>
+              </ul>
+            </div>
+            <div className={styles.carListWrap}>
+              <h3 className={styles.carSubtitle}>
+                Accessories and Functionalities:
+              </h3>
+              <ul className={styles.carList}>
+                {car.accessories.map((accessory, index) => (
+                  <li key={index} className={styles.carListItem}>
+                    <svg className={styles.icon} width="16" height="16">
+                      <use href={`${sprite}#icon-check-circle`} />
+                    </svg>
+                    {accessory}
+                  </li>
+                ))}
+                {car.functionalities.map((functionality, index) => (
+                  <li key={index} className={styles.carListItem}>
+                    <svg className={styles.icon} width="16" height="16">
+                      <use href={`${sprite}#icon-check-circle`} />
+                    </svg>
+                    {functionality}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default CarDetails;

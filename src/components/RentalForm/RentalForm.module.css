@@ -1,0 +1,67 @@
+.formSection {
+  border: 1px solid #dadde1;
+  border-radius: 10px;
+  padding: 32px;
+  width: 640px;
+  height: 488px;
+}
+
+.formSection h3 {
+  font-size: 18px;
+  margin-bottom: 0.5rem;
+}
+
+.formSection p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.rentalForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.input,
+.textarea {
+  border-radius: 12px;
+  padding: 12px 20px;
+  width: 576px;
+  height: 48px;
+  background: #f7f7f7;
+  border: none;
+  font-size: 14px;
+}
+
+.textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #3470ff;
+}
+
+.error {
+  color: #ff0000;
+  font-size: 12px;
+  margin-top: 0.25rem;
+}
+
+.rentalButton {
+  border-radius: 8px;
+  padding: 12px 32px;
+  background: #3470ff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  width: fit-content;
+}
+
+.rentalButton:hover {
+  background: #2959c4;
+}
