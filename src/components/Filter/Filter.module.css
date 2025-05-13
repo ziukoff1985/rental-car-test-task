@@ -1,0 +1,134 @@
+.filter {
+  padding: 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label span {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.33333;
+  color: #8d929a;
+}
+
+.selectWrapper {
+  position: relative;
+}
+
+.select {
+  background: #f7f7f7;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 40px 12px 16px; /* Додано padding-right для відступу стрілочки */
+  width: 204px;
+  height: 44px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #101828;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.selectWrapper::after {
+  content: "▼"; /* Кастомна стрілочка */
+  position: absolute;
+  top: 50%;
+  right: 16px; /* Відступ від правого краю */
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: #333;
+  pointer-events: none;
+}
+
+.select:focus {
+  outline: none;
+  border: none;
+  box-shadow: 0 0 0 2px #3470ff;
+}
+
+.mileage {
+  display: flex;
+  gap: 0;
+  color: #3470ff;
+}
+
+.inputFrom {
+  background: #f7f7f7;
+  border: none;
+  border-right: 1px solid #dadde1;
+  border-radius: 12px 0 0 12px;
+  width: 160px;
+  height: 44px;
+  padding: 12px 16px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #101828;
+}
+
+.inputTo {
+  background: #f7f7f7;
+  border: none;
+  border-radius: 0 12px 12px 0;
+  width: 160px;
+  height: 44px;
+  padding: 12px 16px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #3470ff;
+}
+
+.inputFrom:focus,
+.inputTo:focus,
+.inputFrom:active,
+.inputTo:active {
+  outline: none;
+  box-shadow: 0 0 0 2px #3470ff;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.searchButton,
+.clearButton {
+  border-radius: 12px;
+  padding: 12px 51px;
+  width: 156px;
+  height: 44px;
+  background: #3470ff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.clearButton {
+  background-color: transparent;
+  color: #2959c4;
+  border-color: #2959c4;
+  border: 1px solid;
+}
+
+.searchButton:hover {
+  background: #2959c4;
+}
+
+.clearButton:hover {
+  background: #dadada;
+}

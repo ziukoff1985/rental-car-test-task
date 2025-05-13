@@ -53,6 +53,11 @@ const carsSlice = createSlice({
     incrementPage: (state) => {
       state.page += 1;
     },
+
+    setPage: (state, action) => {
+      state.page = action.payload;
+    },
+
     setShowFavoritesMode: (state) => {
       state.showFavorites = !state.showFavorites;
     },
@@ -109,6 +114,7 @@ export const {
   setFilters,
   clearFilters,
   incrementPage,
+  setPage,
   setShowFavoritesMode,
 } = carsSlice.actions;
 export const carsReducer = carsSlice.reducer;
