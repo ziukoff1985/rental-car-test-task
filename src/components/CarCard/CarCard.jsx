@@ -69,7 +69,7 @@ const CarCard = ({ car }) => {
           )}
         </button>
         <Link to={`/catalog/${car.id}`} className={styles.learnMoreButton}>
-          Learn More
+          Read More
         </Link>
       </div>
     </div>

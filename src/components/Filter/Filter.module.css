@@ -114,7 +114,9 @@
   color: #fff;
   border: none;
   cursor: pointer;
-  font-size: 14px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.25;
   transition: all 0.3s ease;
 }
 
