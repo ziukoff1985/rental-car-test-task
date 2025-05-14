@@ -2,6 +2,10 @@ import styles from "./CarDetailsInfoComp.module.css";
 import sprite from "../../assets/images/icons.svg";
 
 const CarDetailsInfoComp = ({ car }) => {
+  const formatMileage = (mileage) => {
+    return mileage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  };
+
   return (
     <div className={styles.rightColumn}>
       <div className={styles.carInfo}>
@@ -15,7 +19,9 @@ const CarDetailsInfoComp = ({ car }) => {
           </svg>
           <p className={styles.carLocation}>Location: {car.address}</p>
         </div>
-        <p className={styles.carMileage}>Mileage: {car.mileage} km</p>
+        <p className={styles.carMileage}>
+          Mileage: {formatMileage(car.mileage)} km
+        </p>
         <p className={styles.carPrice}>${car.rentalPrice}/hour</p>
 
         <p className={styles.carDescription}>{car.description}</p>
