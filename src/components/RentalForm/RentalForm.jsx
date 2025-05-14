@@ -15,7 +15,7 @@ const RentalForm = () => {
     toast.success(
       `Rental request submitted: ${JSON.stringify(values, null, 2)}`,
       {
-        duration: 4000,
+        duration: 6000,
       }
     );
   };
