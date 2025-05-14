@@ -42,7 +42,7 @@
 }
 
 .selectWrapper::after {
-  content: "▼"; /* Кастомна стрілочка */
+  content: '▼'; /* Кастомна стрілочка */
   position: absolute;
   top: 50%;
   right: 16px; /* Відступ від правого краю */
@@ -111,6 +111,9 @@
 
 .searchButton,
 .clearButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 12px;
   padding: 12px 51px;
   width: 156px;
