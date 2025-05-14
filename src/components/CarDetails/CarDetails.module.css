@@ -19,96 +19,6 @@
   margin-bottom: 40px;
 }
 
-.rightColumn {
-  flex: 1;
-  max-width: 488px;
-}
-
-.carTitle {
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 1.33333;
-  color: #101828;
-  margin-bottom: 8px;
-  margin-top: 20px;
-}
-
-.carId {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.25;
-  color: #8d929a;
-  margin-bottom: 8px;
-}
-
-.location {
-  display: flex;
-  gap: 4px;
-  align-items: center;
-  color: #101828;
-}
-
-.icon {
-  stroke: #101828;
-  display: flex;
-  align-self: center;
-  justify-content: center;
-  width: 16px;
-  height: 16px;
-}
-
-.carMileage {
-  color: #101828;
-  margin-left: 20px;
-  margin-top: 8px;
-  margin-bottom: 16px;
-}
-
-.carPrice {
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 1.33333;
-  color: #3470ff;
-  margin-bottom: 32px;
-}
-
-.carDescription {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.25;
-  color: #101828;
-  margin-bottom: 60px;
-}
-
-.carListWrapContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 87px;
-}
-
-.carSubtitle {
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 1.2;
-  color: #101828;
-  margin-bottom: 20px;
-}
-
-.carListItem {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.25;
-  color: #101828;
-  margin-bottom: 16px;
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.carListItem:last-child {
-  margin-bottom: 0;
-}
-
 .error {
   color: #ff0000;
   text-align: center;
@@ -119,8 +29,7 @@
   .container {
     flex-direction: row;
   }
-  .leftColumn,
-  .rightColumn {
+  .leftColumn {
     flex: 0 0 50%;
   }
 }
