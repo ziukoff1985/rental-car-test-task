@@ -73,6 +73,7 @@ export default [
       ...reactHooks.configs.recommended.rules,
       // Явно додаємо правило для перевірки невизначених компонентів
       "react/jsx-no-undef": "error",
+      "react/prop-types": 0,
       "no-unused-vars": ["error", { varsIgnorePattern: "^[A-Z_]" }],
       "react-refresh/only-export-components": [
         "warn",

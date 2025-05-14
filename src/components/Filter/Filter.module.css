@@ -55,7 +55,7 @@
 .select:focus {
   outline: none;
   border: none;
-  box-shadow: 0 0 0 2px #3470ff;
+  background-color: #f1f1f1;
 }
 
 .mileage {
@@ -79,6 +79,7 @@
 }
 
 .inputTo {
+  outline: none;
   background: #f7f7f7;
   border: none;
   border-radius: 0 12px 12px 0;
@@ -88,7 +89,6 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 1.25;
-  color: #3470ff;
 }
 
 .inputFrom:focus,
@@ -96,7 +96,12 @@
 .inputFrom:active,
 .inputTo:active {
   outline: none;
-  box-shadow: 0 0 0 2px #3470ff;
+  border: none;
+  background-color: #f1f1f1;
+}
+
+.inputFrom:focus {
+  border-right: 1px solid #dadde1;
 }
 
 .buttons {
@@ -122,9 +127,8 @@
 
 .clearButton {
   background-color: transparent;
-  color: #2959c4;
-  border-color: #2959c4;
-  border: 1px solid;
+  color: #2959c4; /* Синій текст */
+  border: 2px solid #dad6d6; /* Сіра рамка */
 }
 
 .searchButton:hover {
@@ -132,5 +136,11 @@
 }
 
 .clearButton:hover {
-  background: #dadada;
+  background: #f7f7f7;
+}
+
+input:focus,
+select:focus,
+button:focus {
+  outline: none !important;
 }
