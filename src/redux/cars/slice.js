@@ -28,13 +28,13 @@ const carsSlice = createSlice({
   initialState,
   reducers: {
     addOrRemoveFromFavorites: (state, action) => {
-      const carId = action.payload;
-      console.log('Car ID:', carId);
-      const isFavorite = state.favorites.includes(carId);
+      const car = action.payload;
+      console.log('Car:', car);
+      const isFavorite = state.favorites.some(item => item.id === car.id);
       if (isFavorite) {
-        state.favorites = state.favorites.filter(id => id !== carId);
+        state.favorites = state.favorites.filter(item => item.id !== car.id);
       } else {
-        state.favorites.push(carId);
+        state.favorites.push(car);
       }
       localStorage.setItem('favorites', JSON.stringify(state.favorites));
     },
@@ -65,6 +65,11 @@ const carsSlice = createSlice({
 
     setShowFavoritesMode: state => {
       state.showFavorites = !state.showFavorites;
+    },
+
+    clearFavorites: state => {
+      state.favorites = [];
+      localStorage.setItem('favorites', JSON.stringify(state.favorites));
     },
   },
   extraReducers: builder => {
@@ -122,5 +127,6 @@ export const {
   setPage,
   resetCars,
   setShowFavoritesMode,
+  clearFavorites,
 } = carsSlice.actions;
 export const carsReducer = carsSlice.reducer;

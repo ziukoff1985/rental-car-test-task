@@ -7,10 +7,10 @@ import styles from './CarCard.module.css';
 const CarCard = ({ car }) => {
   const dispatch = useDispatch();
   const favorites = useSelector(selectFavorites);
-  const isFavorite = favorites.includes(car.id);
+  const isFavorite = favorites.some(item => item.id === car.id); // Змінено: перевіряємо об'єкти
 
   const handleToggleFavorite = () => {
-    dispatch(addOrRemoveFromFavorites(car.id));
+    dispatch(addOrRemoveFromFavorites(car));
   };
 
   const formatMileage = mileage => {
