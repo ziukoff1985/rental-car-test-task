@@ -6,10 +6,10 @@ import {
 } from '../../redux/cars/selectors.js';
 import { clearFavorites } from '../../redux/cars/slice.js';
 import { useDispatch } from 'react-redux';
-import CarCard from '../CarCard/CarCard.jsx';
+import CarCard from '../../components/CarCard/CarCard.jsx';
 
 import styles from './FavoritesPage.module.css';
-import Loader from '../Loader/Loader.jsx';
+import Loader from '../../components/Loader/Loader.jsx';
 
 const FavoritesPage = () => {
   const favorites = useSelector(selectFavorites);

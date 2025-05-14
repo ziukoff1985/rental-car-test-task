@@ -7,10 +7,10 @@ import {
   selectIsError,
 } from '../../redux/cars/selectors.js';
 import { fetchCarByIdThunk } from '../../redux/cars/operations.js';
-import RentalForm from '../RentalForm/RentalForm.jsx';
-import Loader from '../Loader/Loader.jsx';
+import RentalForm from '../../components/RentalForm/RentalForm.jsx';
+import Loader from '../../components/Loader/Loader.jsx';
 import styles from './CarDetails.module.css';
-import CarDetailsInfoComp from '../CarDetailsInfoComp/CarDetailsInfoComp.jsx';
+import CarDetailsInfoComp from '../../components/CarDetailsInfoComp/CarDetailsInfoComp.jsx';
 
 const CarDetails = () => {
   const { id } = useParams();

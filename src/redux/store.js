@@ -1,12 +1,22 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { persistStore, persistReducer } from 'redux-persist';
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { carsReducer } from './cars/slice.js';
 
 const persistConfig = {
-  key: 'root',
+  key: 'cars-data', // Змінено: унікальний ключ для вашого проєкту
+  version: 1, // Додано: для майбутньої міграції
   storage,
-  whitelist: ['cars'],
+  whitelist: ['favorites'], // Змінено: зберігаємо лише favorites
 };
 
 const persistedReducer = persistReducer(persistConfig, carsReducer);
@@ -18,9 +28,36 @@ export const store = configureStore({
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: ['persist/PERSIST', 'persist/REHYDRATE'],
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER], // Змінено: ігноруємо всі дії
       },
     }),
 });
 
-export const persistor = persistStore(store); // Експортуємо persistor
+export const persistor = persistStore(store);
+
+// import { configureStore } from '@reduxjs/toolkit';
+// import { persistStore, persistReducer } from 'redux-persist';
+// import storage from 'redux-persist/lib/storage';
+// import { carsReducer } from './cars/slice.js';
+
+// const persistConfig = {
+//   key: 'root',
+//   storage,
+//   whitelist: ['cars'],
+// };
+
+// const persistedReducer = persistReducer(persistConfig, carsReducer);
+
+// export const store = configureStore({
+//   reducer: {
+//     cars: persistedReducer,
+//   },
+//   middleware: getDefaultMiddleware =>
+//     getDefaultMiddleware({
+//       serializableCheck: {
+//         ignoredActions: ['persist/PERSIST', 'persist/REHYDRATE'],
+//       },
+//     }),
+// });
+
+// export const persistor = persistStore(store); // Експортуємо persistor

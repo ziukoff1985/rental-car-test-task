@@ -8,7 +8,7 @@ import {
 const initialState = {
   cars: [],
   currentCar: null,
-  favorites: JSON.parse(localStorage.getItem('favorites')) || [],
+  favorites: [],
   brands: [],
   filters: {
     brand: '',
@@ -29,14 +29,12 @@ const carsSlice = createSlice({
   reducers: {
     addOrRemoveFromFavorites: (state, action) => {
       const car = action.payload;
-      console.log('Car:', car);
       const isFavorite = state.favorites.some(item => item.id === car.id);
       if (isFavorite) {
         state.favorites = state.favorites.filter(item => item.id !== car.id);
       } else {
         state.favorites.push(car);
       }
-      localStorage.setItem('favorites', JSON.stringify(state.favorites));
     },
     setFilters: (state, action) => {
       state.filters = { ...state.filters, ...action.payload };
@@ -69,7 +67,6 @@ const carsSlice = createSlice({
 
     clearFavorites: state => {
       state.favorites = [];
-      localStorage.setItem('favorites', JSON.stringify(state.favorites));
     },
   },
   extraReducers: builder => {
