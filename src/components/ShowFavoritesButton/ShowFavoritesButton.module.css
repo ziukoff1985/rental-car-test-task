@@ -1,0 +1,32 @@
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 10px;
+  background: #f7f7f7;
+  border: 1px solid #dadde1;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #101828;
+  font-size: 12px;
+  font-weight: 500;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.btn:hover {
+  background: #e0e7ff;
+  color: #3470ff;
+}
+
+.btn.active {
+  background: #e0e7ff;
+  color: #3470ff;
+  border-color: #3470ff;
+}
+
+.icon {
+  fill: currentColor;
+  display: flex;
+  align-items: center;
+}

@@ -1,8 +1,8 @@
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { addOrRemoveFromFavorites } from "../../redux/cars/slice.js";
-import { selectFavorites } from "../../redux/cars/selectors.js";
-import styles from "./CarCard.module.css";
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { addOrRemoveFromFavorites } from '../../redux/cars/slice.js';
+import { selectFavorites } from '../../redux/cars/selectors.js';
+import styles from './CarCard.module.css';
 
 const CarCard = ({ car }) => {
   const dispatch = useDispatch();
@@ -11,6 +11,10 @@ const CarCard = ({ car }) => {
 
   const handleToggleFavorite = () => {
     dispatch(addOrRemoveFromFavorites(car.id));
+  };
+
+  const formatMileage = mileage => {
+    return mileage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
   };
 
   return (
@@ -23,15 +27,15 @@ const CarCard = ({ car }) => {
       <div className={styles.info}>
         <div className={styles.header}>
           <h3 className={styles.title}>
-            {car.brand} <span className={styles.model}>{car.model}</span>,{" "}
+            {car.brand} <span className={styles.model}>{car.model}</span>,{' '}
             {car.year}
           </h3>
           <p className={styles.price}>${car.rentalPrice}</p>
         </div>
         <div className={styles.details}>
-          <p>{car.address.split(", ").slice(-2).join(" | ")}</p>
+          <p>{car.address.split(', ').slice(-2).join(' | ')}</p>
           <p>
-            {car.rentalCompany} | {car.type} | {car.mileage} km
+            {car.rentalCompany} | {car.type} | {formatMileage(car.mileage)} km
           </p>
         </div>
         <button

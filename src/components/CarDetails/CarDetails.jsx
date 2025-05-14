@@ -1,16 +1,16 @@
-import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 import {
   selectCurrentCar,
   selectIsLoading,
   selectIsError,
-} from "../../redux/cars/selectors.js";
-import { fetchCarByIdThunk } from "../../redux/cars/operations.js";
-import RentalForm from "../RentalForm/RentalForm.jsx";
-import Loader from "../Loader/Loader.jsx";
-import styles from "./CarDetails.module.css";
-import CarDetailsInfoComp from "../CarDetailsInfoComp/CarDetailsInfoComp.jsx";
+} from '../../redux/cars/selectors.js';
+import { fetchCarByIdThunk } from '../../redux/cars/operations.js';
+import RentalForm from '../RentalForm/RentalForm.jsx';
+import Loader from '../Loader/Loader.jsx';
+import styles from './CarDetails.module.css';
+import CarDetailsInfoComp from '../CarDetailsInfoComp/CarDetailsInfoComp.jsx';
 
 const CarDetails = () => {
   const { id } = useParams();
@@ -20,7 +20,9 @@ const CarDetails = () => {
   const isError = useSelector(selectIsError);
 
   useEffect(() => {
-    dispatch(fetchCarByIdThunk(id));
+    if (id) {
+      dispatch(fetchCarByIdThunk(id));
+    }
   }, [dispatch, id]);
 
   if (isLoading) {

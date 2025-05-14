@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   selectFilters,
   selectHasMoreCars,
@@ -7,12 +7,12 @@ import {
   selectIsLoading,
   selectPage,
   selectVisibleCars,
-} from "../../redux/cars/selectors.js";
-import { fetchCarsThunk } from "../../redux/cars/operations.js";
-import { incrementPage, setPage } from "../../redux/cars/slice.js";
-import styles from "./CatalogPage.module.css";
-import Filter from "../../components/Filter/Filter.jsx";
-import CarCard from "../../components/CarCard/CarCard.jsx";
+} from '../../redux/cars/selectors.js';
+import { fetchCarsThunk } from '../../redux/cars/operations.js';
+import { incrementPage, setPage, resetCars } from '../../redux/cars/slice.js';
+import styles from './CatalogPage.module.css';
+import Filter from '../../components/Filter/Filter.jsx';
+import CarCard from '../../components/CarCard/CarCard.jsx';
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
@@ -30,7 +30,7 @@ const CatalogPage = () => {
   }, [dispatch, page]);
 
   const handleSearch = () => {
-    // При натисканні на Search скидаємо сторінку до 1 і викликаємо запит із поточними фільтрами
+    dispatch(resetCars());
     dispatch(setPage(1));
     dispatch(fetchCarsThunk({ page: 1, filters }));
   };
@@ -45,7 +45,7 @@ const CatalogPage = () => {
       {isLoading && <p className={styles.loading}>Loading...</p>}
       {isError && <p className={styles.error}>Error: {isError}</p>}
       <div className={styles.grid}>
-        {cars.map((car) => (
+        {cars.map(car => (
           <CarCard key={car.id} car={car} />
         ))}
       </div>
