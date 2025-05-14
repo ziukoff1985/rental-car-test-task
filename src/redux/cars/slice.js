@@ -29,6 +29,7 @@ const carsSlice = createSlice({
   reducers: {
     addOrRemoveFromFavorites: (state, action) => {
       const carId = action.payload;
+      console.log('Car ID:', carId);
       const isFavorite = state.favorites.includes(carId);
       if (isFavorite) {
         state.favorites = state.favorites.filter(id => id !== carId);
@@ -119,6 +120,7 @@ export const {
   clearFilters,
   incrementPage,
   setPage,
+  resetCars,
   setShowFavoritesMode,
 } = carsSlice.actions;
 export const carsReducer = carsSlice.reducer;
