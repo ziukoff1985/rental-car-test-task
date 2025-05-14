@@ -1,9 +1,9 @@
-import styles from "./CarDetailsInfoComp.module.css";
-import sprite from "../../assets/images/icons.svg";
+import styles from './CarDetailsInfoComp.module.css';
+import sprite from '../../assets/images/svg-icons-sprite.svg';
 
 const CarDetailsInfoComp = ({ car }) => {
-  const formatMileage = (mileage) => {
-    return mileage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  const formatMileage = mileage => {
+    return mileage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
   };
 
   return (
@@ -23,7 +23,6 @@ const CarDetailsInfoComp = ({ car }) => {
           Mileage: {formatMileage(car.mileage)} km
         </p>
         <p className={styles.carPrice}>${car.rentalPrice}/hour</p>
-
         <p className={styles.carDescription}>{car.description}</p>
         <div className={styles.carListWrapContainer}>
           <div className={styles.carListWrap}>

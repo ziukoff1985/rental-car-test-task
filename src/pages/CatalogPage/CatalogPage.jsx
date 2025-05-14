@@ -13,6 +13,7 @@ import { incrementPage, setPage, resetCars } from '../../redux/cars/slice.js';
 import styles from './CatalogPage.module.css';
 import Filter from '../../components/Filter/Filter.jsx';
 import CarCard from '../../components/CarCard/CarCard.jsx';
+import Loader from '../../components/Loader/Loader.jsx';
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
@@ -42,12 +43,14 @@ const CatalogPage = () => {
   return (
     <div className={styles.container}>
       <Filter onSearch={handleSearch} />
-      {isLoading && <p className={styles.loading}>Loading...</p>}
+      {isLoading && <Loader loading={isLoading} />}
       {isError && <p className={styles.error}>Error: {isError}</p>}
-      <div className={styles.grid}>
-        {cars.map(car => (
-          <CarCard key={car.id} car={car} />
-        ))}
+      <div className={styles.gridContainer}>
+        <div className={styles.grid}>
+          {cars.map(car => (
+            <CarCard key={car.id} car={car} />
+          ))}
+        </div>
       </div>
       {hasMoreCars && !isLoading && (
         <button onClick={handleLoadMore} className={styles.loadMoreButton}>
