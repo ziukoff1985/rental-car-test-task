@@ -41,17 +41,6 @@
   -moz-appearance: none;
 }
 
-/* .selectWrapper::after {
-  content: '▼'; Кастомна стрілочка
-  position: absolute;
-  top: 50%;
-  right: 16px; Відступ від правого краю
-  transform: translateY(-50%);
-  font-size: 12px;
-  color: #333;
-  pointer-events: none;
-} */
-
 .select:focus {
   outline: none;
   border: none;
@@ -100,7 +89,7 @@
 .inputTo:active {
   outline: none;
   border: none;
-  background-color: #f1f1f1;
+  background-color: #f7f7f7;
 }
 
 .inputFrom:focus {
