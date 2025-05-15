@@ -21,6 +21,12 @@
   margin: 2rem 0;
 }
 
+.noResults {
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 2rem 0;
+}
+
 .error {
   color: #e74c3c;
 }
