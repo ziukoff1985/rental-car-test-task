@@ -19,6 +19,7 @@
     "react-datepicker": "^8.3.0",
     "react-dom": "^19.1.0",
     "react-hot-toast": "^2.5.2",
+    "react-number-format": "^5.4.4",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.6.0",
     "react-select": "^5.10.1",
