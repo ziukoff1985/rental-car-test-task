@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectBrands, selectFilters } from '../../redux/cars/selectors.js';
 import { setFilters, clearFilters } from '../../redux/cars/slice.js';
 import styles from './Filter.module.css';
+import { fetchCarsThunk } from '../../redux/cars/operations.js';
 
 const Filter = ({ onSearch }) => {
   const dispatch = useDispatch();
@@ -15,6 +16,13 @@ const Filter = ({ onSearch }) => {
 
   const handleClearFilters = () => {
     dispatch(clearFilters());
+    // Викликаємо fetchCarsThunk із порожніми фільтрами, щоб відобразити всі авто
+    dispatch(
+      fetchCarsThunk({
+        page: 1,
+        filters: { brand: '', rentalPrice: '', minMileage: '', maxMileage: '' },
+      })
+    );
   };
 
   return (
