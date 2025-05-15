@@ -1,5 +1,5 @@
-import sprite from "../../assets/images/icons.svg";
-import styles from "./Logo.module.css";
+import sprite from '../../assets/images/svg-icons-sprite.svg';
+import styles from './Logo.module.css';
 
 const Logo = () => {
   return (

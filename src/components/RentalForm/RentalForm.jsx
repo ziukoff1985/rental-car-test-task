@@ -1,33 +1,59 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import toast from "react-hot-toast";
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import toast from 'react-hot-toast';
 
-import rentalFormValidationSchema from "../../validationHelpers/rentalFormValidation.js";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import styles from "./RentalForm.module.css";
+import { ToastFormNotification } from '../ToastFormNotification/ToastFormNotification.jsx';
+
+import rentalFormValidationSchema from '../../validationHelpers/rentalFormValidation.js';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import styles from './RentalForm.module.css';
+import { formatFormData } from '../../utils/formatData.js';
 
 const RentalForm = () => {
   const initialValues = {
-    name: "",
-    email: "",
+    name: '',
+    email: '',
     bookingDate: null,
-    comment: "",
+    comment: '',
   };
 
-  const handleSubmit = (values) => {
+  // const handleSubmit = (values) => {
+  //   toast.success(
+  //     `Rental request submitted: ${JSON.stringify(
+  //       {
+  //         ...values,
+  //         bookingDate: values.bookingDate
+  //           ? values.bookingDate.toISOString().split("T")[0]
+  //           : "",
+  //       },
+  //       null,
+  //       2
+  //     )}`,
+  //     {
+  //       duration: 4000,
+  //     }
+  //   );
+  // };
+
+  const handleSubmit = values => {
+    // Форматуємо дані
+    const formattedData = formatFormData(values);
+
+    // Використовуємо переокремлений компонент для toast
     toast.success(
-      `Rental request submitted: ${JSON.stringify(
-        {
-          ...values,
-          bookingDate: values.bookingDate
-            ? values.bookingDate.toISOString().split("T")[0]
-            : "",
-        },
-        null,
-        2
-      )}`,
+      <ToastFormNotification
+        title="Rental request submitted:"
+        data={formattedData}
+      />,
       {
-        duration: 4000,
+        duration: 5000,
+        style: {
+          background: '#3470ff',
+          color: '#fff',
+          borderRadius: '8px',
+          boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+          fontSize: '20px',
+        },
       }
     );
   };
@@ -67,7 +93,7 @@ const RentalForm = () => {
             />
             <DatePicker
               selected={values.bookingDate}
-              onChange={(date) => setFieldValue("bookingDate", date)}
+              onChange={date => setFieldValue('bookingDate', date)}
               placeholderText="Booking Date*"
               className={styles.input}
               dateFormat="MM/dd/yyyy"
