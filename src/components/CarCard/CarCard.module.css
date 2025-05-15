@@ -1,6 +1,6 @@
 .card {
   width: 276px;
-  border-radius: 8px;
+  border-radius: 14px;
   overflow: hidden;
   /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
   border: none;
@@ -11,17 +11,19 @@
 .card:hover {
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
   scale: 1.02;
+  transform: translateY(6px);
+  /* outline: 1px solid #a7a7a7; */
 }
 
 .image {
   width: 100%;
-  height: 200px;
+  height: 268px;
   object-fit: cover;
   border-radius: 14px;
 }
 
 .info {
-  padding: 16px 5px 0;
+  padding: 14px 0 0 0;
   height: 156px;
   display: flex;
   flex-direction: column;
@@ -53,6 +55,8 @@
 }
 
 .details {
+  display: flex;
+  flex-direction: column;
   font-weight: 400;
   font-size: 12px;
   line-height: 1.33;
@@ -61,7 +65,20 @@
 }
 
 .details p {
-  margin: 0;
+  display: flex;
+  align-items: center;
+  margin: auto 0 0;
+  font-weight: 400;
+  font-size: 12px;
+  /* line-height: 1.33333; */
+  color: #8d929a;
+}
+
+.separator {
+  color: #dadde1;
+  /* font-weight: bold; */
+  font-size: 16px;
+  padding: 0 4px; /* Пробіли ліворуч і праворуч */
 }
 
 .favoriteButton {
@@ -91,7 +108,7 @@
   padding: 12px 90px;
   transition: background-color 0.3s ease;
   margin-top: auto;
-  margin-bottom: 5px;
+  margin-bottom: 1px;
 }
 
 .learnMoreButton:hover {

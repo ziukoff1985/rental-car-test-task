@@ -1,14 +1,14 @@
-import { useSelector, useDispatch } from "react-redux";
-import { selectBrands, selectFilters } from "../../redux/cars/selectors.js";
-import { setFilters, clearFilters } from "../../redux/cars/slice.js";
-import styles from "./Filter.module.css";
+import { useSelector, useDispatch } from 'react-redux';
+import { selectBrands, selectFilters } from '../../redux/cars/selectors.js';
+import { setFilters, clearFilters } from '../../redux/cars/slice.js';
+import styles from './Filter.module.css';
 
 const Filter = ({ onSearch }) => {
   const dispatch = useDispatch();
   const brands = useSelector(selectBrands);
   const filters = useSelector(selectFilters);
 
-  const handleFilterChange = (e) => {
+  const handleFilterChange = e => {
     const { name, value } = e.target;
     dispatch(setFilters({ [name]: value }));
   };
@@ -31,7 +31,7 @@ const Filter = ({ onSearch }) => {
             <option value="" disabled hidden>
               Choose a brand
             </option>
-            {brands.map((brand) => (
+            {brands.map(brand => (
               <option key={brand} value={brand}>
                 {brand}
               </option>
@@ -52,9 +52,9 @@ const Filter = ({ onSearch }) => {
             <option value="" disabled hidden>
               Choose a price
             </option>
-            {[30, 40, 50, 60, 70, 80].map((price) => (
+            {[30, 40, 50, 60, 70, 80].map(price => (
               <option key={price} value={price}>
-                {price}$
+                {price}
               </option>
             ))}
           </select>

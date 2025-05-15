@@ -1,7 +1,7 @@
 .hero {
   position: relative;
   height: calc(100vh - 60px); /* Віднімаємо висоту шапки */
-  background: url("../../assets/images/hero-bg-1x.jpg") no-repeat center/cover;
+  background: url('../../assets/images/hero-bg-1x.jpg') no-repeat center/cover;
   display: flex;
   margin-top: auto;
   flex-direction: column;
@@ -14,7 +14,7 @@
 /* Для екранів із високою щільністю пікселів (Retina) */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .hero {
-    background: url("../../assets/images/hero-bg-2x.jpg") no-repeat center/cover;
+    background: url('../../assets/images/hero-bg-2x.jpg') no-repeat center/cover;
   }
 }
 
@@ -35,6 +35,8 @@
 
 .button {
   display: inline-block;
+  width: 276px;
+  height: 44px;
   padding: 12px 88px;
   font-weight: 600;
   font-size: 16px;
