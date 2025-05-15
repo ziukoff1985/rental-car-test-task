@@ -41,16 +41,16 @@
   -moz-appearance: none;
 }
 
-.selectWrapper::after {
-  content: '▼'; /* Кастомна стрілочка */
+/* .selectWrapper::after {
+  content: '▼'; Кастомна стрілочка
   position: absolute;
   top: 50%;
-  right: 16px; /* Відступ від правого краю */
+  right: 16px; Відступ від правого краю
   transform: translateY(-50%);
   font-size: 12px;
   color: #333;
   pointer-events: none;
-}
+} */
 
 .select:focus {
   outline: none;
@@ -149,4 +149,20 @@ input:focus,
 select:focus,
 button:focus {
   outline: none !important;
+}
+
+/* Це для правильної взаємодії з вашими існуючими стилями */
+.reactSelect {
+  width: 100%;
+}
+
+/* Приховуємо стандартну стрілочку, оскільки ви маєте власну в .selectWrapper::after */
+.selectWrapper .react-select__dropdown-indicator svg {
+  display: none;
+}
+
+/* Позиціювання після-елемента відносно новий компонент Select */
+.selectWrapper::after {
+  right: 16px;
+  z-index: 1;
 }

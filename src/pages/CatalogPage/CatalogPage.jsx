@@ -43,6 +43,14 @@ const CatalogPage = () => {
   return (
     <div className={styles.container}>
       <Filter onSearch={handleSearch} />
+      {cars.length === 0 && (
+        <>
+          <p className={styles.noResults}>No results found</p>
+          <p className={styles.noResults}>
+            Try changing the filters and search again
+          </p>
+        </>
+      )}
       {isLoading && <Loader loading={isLoading} />}
       {isError && <p className={styles.error}>Error: {isError}</p>}
       <div className={styles.gridContainer}>
