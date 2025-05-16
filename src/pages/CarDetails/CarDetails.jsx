@@ -25,29 +25,26 @@ const CarDetails = () => {
     }
   }, [dispatch, id]);
 
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  if (isError) {
-    return <div className={styles.error}>Error: {isError}</div>;
-  }
-
-  if (!car) {
-    return <div className={styles.error}>Car not found</div>;
-  }
-
   return (
-    <div className={styles.container}>
-      <div className={styles.leftColumn}>
-        <img
-          src={car.img}
-          alt={`${car.brand} ${car.model}`}
-          className={styles.image}
-        />
-        <RentalForm />
+    <div>
+      {isLoading && <Loader loading={isLoading} />}
+      <div className={styles.container}>
+        {isError && <p className={styles.error}>Error: {isError}</p>}
+        {!car && !isLoading && <p className={styles.error}>Car not found</p>}
+        {car && (
+          <>
+            <div className={styles.leftColumn}>
+              <img
+                src={car.img}
+                alt={`${car.brand} ${car.model}`}
+                className={styles.image}
+              />
+              <RentalForm />
+            </div>
+            <CarDetailsInfoComp car={car} />
+          </>
+        )}
       </div>
-      <CarDetailsInfoComp car={car} />
     </div>
   );
 };
