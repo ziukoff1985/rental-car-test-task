@@ -1,0 +1,40 @@
+/* додайте цей файл у той самий каталог, що й ваш компонент */
+/* datepicker-override.css */
+
+.custom-datepicker {
+  background-color: white !important;
+  border-radius: 12px !important;
+  border: 1px solid #3470ff !important;
+}
+
+.custom-datepicker .react-datepicker__header {
+  background-color: white !important;
+  border-radius: 12px 12px 0 0 !important;
+  border-bottom: 1px solid #3470ff !important;
+  padding-top: 10px !important;
+}
+
+.custom-datepicker .react-datepicker__day--selected {
+  background-color: #3470ff !important;
+  border-radius: 50% !important;
+}
+
+.custom-datepicker .react-datepicker__day--keyboard-selected {
+  background-color: rgba(52, 112, 255, 0.2) !important;
+  border-radius: 50% !important;
+}
+
+.custom-datepicker .react-datepicker__day:hover {
+  border-radius: 50% !important;
+  background-color: rgba(52, 112, 255, 0.1) !important;
+}
+
+/* Додаткові стилі для кращого вигляду */
+.custom-datepicker .react-datepicker__day {
+  margin: 0.2rem !important;
+}
+
+/* Стилізація стрілочок навігації на синій колір */
+.custom-datepicker .react-datepicker__navigation-icon::before {
+  border-color: #3470ff !important;
+}

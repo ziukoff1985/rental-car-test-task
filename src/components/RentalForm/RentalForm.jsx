@@ -8,6 +8,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import styles from './RentalForm.module.css';
 import { formatFormData } from '../../utils/formatData.js';
+import './datepicker-override.css';
 
 const RentalForm = () => {
   const initialValues = {
@@ -16,24 +17,6 @@ const RentalForm = () => {
     bookingDate: null,
     comment: '',
   };
-
-  // const handleSubmit = (values) => {
-  //   toast.success(
-  //     `Rental request submitted: ${JSON.stringify(
-  //       {
-  //         ...values,
-  //         bookingDate: values.bookingDate
-  //           ? values.bookingDate.toISOString().split("T")[0]
-  //           : "",
-  //       },
-  //       null,
-  //       2
-  //     )}`,
-  //     {
-  //       duration: 4000,
-  //     }
-  //   );
-  // };
 
   const handleSubmit = values => {
     // Форматуємо дані
@@ -97,6 +80,8 @@ const RentalForm = () => {
               placeholderText="Booking Date*"
               className={styles.input}
               dateFormat="MM/dd/yyyy"
+              calendarClassName="custom-datepicker"
+              wrapperClassName={styles.datePickerWrapper}
             />
             <ErrorMessage
               name="bookingDate"

@@ -67,3 +67,9 @@
 .rentalButton:hover {
   background: #2959c4;
 }
+
+/* Стилі для обгортки DatePicker */
+.datePickerWrapper {
+  width: 576px;
+  position: relative;
+}
