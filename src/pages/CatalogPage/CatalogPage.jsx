@@ -8,7 +8,10 @@ import {
   selectPage,
   selectVisibleCars,
 } from '../../redux/cars/selectors.js';
-import { fetchCarsThunk } from '../../redux/cars/operations.js';
+import {
+  fetchBrandsThunk,
+  fetchCarsThunk,
+} from '../../redux/cars/operations.js';
 import { incrementPage, setPage, resetCars } from '../../redux/cars/slice.js';
 import styles from './CatalogPage.module.css';
 import Filter from '../../components/Filter/Filter.jsx';
@@ -29,6 +32,12 @@ const CatalogPage = () => {
     dispatch(fetchCarsThunk({ page, filters }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, page]);
+
+  // const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchBrandsThunk());
+  }, [dispatch]);
 
   const handleSearch = () => {
     dispatch(resetCars());

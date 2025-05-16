@@ -146,12 +146,12 @@ button:focus {
 }
 
 /* Приховуємо стандартну стрілочку, оскільки ви маєте власну в .selectWrapper::after */
-.selectWrapper .react-select__dropdown-indicator svg {
+/* .selectWrapper .react-select__dropdown-indicator svg {
   display: none;
-}
+} */
 
 /* Позиціювання після-елемента відносно новий компонент Select */
-.selectWrapper::after {
+/* .selectWrapper::after {
   right: 16px;
   z-index: 1;
-}
+} */
