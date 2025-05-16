@@ -109,7 +109,9 @@
 
 .icon {
   fill: #101828;
-  transition: transform 5s ease;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
 }
 
 /* Це для правильної взаємодії з існуючими стилями */
