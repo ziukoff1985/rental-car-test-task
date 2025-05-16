@@ -13,8 +13,13 @@
 
 - Filter cars by brand, price, and mileage.
 - Add cars to your favorites and save them when you refresh.
-- Detailed information about the car with a booking form.
-- Pagination of the catalog through the 'Load More' button.
+- Detailed information about each car with a booking form.
+- Pagination of the catalog through the "Load More" button.
+- Dynamic data fetching from a remote API to display cars and brands.
+- Global state management with Redux Toolkit for consistent state across pages.
+- Asynchronous logic handled via Redux Thunks for API interactions.
+- Error handling and loading indicators for smooth user experience.
+- Persistent favorite cars using localStorage, even after page reloads.
 
 ---
 
