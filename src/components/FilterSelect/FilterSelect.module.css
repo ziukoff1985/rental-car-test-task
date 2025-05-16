@@ -1,0 +1,10 @@
+.reactSelect {
+  width: 100%;
+}
+
+.icon {
+  fill: #101828;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+}

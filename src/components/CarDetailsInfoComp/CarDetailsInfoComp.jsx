@@ -22,7 +22,7 @@ const CarDetailsInfoComp = ({ car }) => {
         <p className={styles.carMileage}>
           Mileage: {formatMileage(car.mileage)} km
         </p>
-        <p className={styles.carPrice}>${car.rentalPrice}/hour</p>
+        <p className={styles.carPrice}>${car.rentalPrice}</p>
         <p className={styles.carDescription}>{car.description}</p>
         <div className={styles.carListWrapContainer}>
           <div className={styles.carListWrap}>
