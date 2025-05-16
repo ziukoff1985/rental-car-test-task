@@ -114,3 +114,8 @@
 .learnMoreButton:hover {
   background-color: #2959c4;
 }
+
+.separatorIcon {
+  vertical-align: middle;
+  fill: currentColor;
+}

@@ -34,11 +34,44 @@ const CarCard = ({ car }) => {
           <p className={styles.price}>${car.rentalPrice}</p>
         </div>
         <div className={styles.details}>
-          <p>{car.address.split(', ').slice(-2).join(' | ')}</p>
           <p>
-            {car.rentalCompany} | {car.type} | {formatMileage(car.mileage)} km
+            {car.address
+              .split(', ')
+              .slice(-2)
+              .map((part, index, array) => (
+                <span key={index}>
+                  {part}
+                  {index < array.length - 1 && (
+                    <svg
+                      className={styles.separatorIcon}
+                      width="16"
+                      height="14"
+                    >
+                      <use href={`${sprite}#icon-separator`} />
+                    </svg>
+                  )}
+                </span>
+              ))}
+          </p>
+
+          <p>
+            {[
+              car.rentalCompany,
+              car.type,
+              `${formatMileage(car.mileage)} km`,
+            ].map((part, index, array) => (
+              <span key={index}>
+                {part}
+                {index < array.length - 1 && (
+                  <svg className={styles.separatorIcon} width="14" height="14">
+                    <use href={`${sprite}#icon-separator`} />
+                  </svg>
+                )}
+              </span>
+            ))}
           </p>
         </div>
+
         <button
           onClick={handleToggleFavorite}
           className={styles.favoriteButton}
