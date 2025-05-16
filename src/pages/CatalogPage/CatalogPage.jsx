@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectBrands,
@@ -29,12 +29,18 @@ const CatalogPage = () => {
   const page = useSelector(selectPage);
   const brands = useSelector(selectBrands);
 
+  // Використовуємо useRef для відстеження, чи був здійснений початковий запит
+  const initialFetchDone = useRef(false);
+
+  // Замінюємо проблемний useEffect
   useEffect(() => {
-    if (!cars.length && page === 1) {
+    // Перевіряємо, чи запит ще не було здійснено
+    if (!initialFetchDone.current) {
       dispatch(fetchCarsThunk({ page, filters }));
+      initialFetchDone.current = true;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, page, cars]);
+  }, [dispatch]);
 
   useEffect(() => {
     if (!brands.length) {
@@ -56,7 +62,7 @@ const CatalogPage = () => {
   return (
     <div className={styles.container}>
       <Filter onSearch={handleSearch} />
-      {cars.length === 0 && (
+      {!isLoading && cars.length === 0 && (
         <>
           <p className={styles.noResults}>No results found</p>
           <p className={styles.noResults}>

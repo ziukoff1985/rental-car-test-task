@@ -33,7 +33,11 @@ export const fetchCarsThunk = createAsyncThunk(
           maxMileage: filters.maxMileage || undefined,
         },
       });
-      return response.data;
+      console.log('Response:', response.data); // Додано для налагодження
+      return {
+        cars: response.data.cars || [],
+        totalPages: response.data.totalPages || 0,
+      };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

@@ -73,10 +73,11 @@ const carsSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(fetchCarsThunk.fulfilled, (state, action) => {
+        const newCars = action.payload.cars || [];
         if (state.page === 1) {
-          state.cars = action.payload.cars;
+          state.cars = newCars;
         } else {
-          state.cars = [...state.cars, ...action.payload.cars];
+          state.cars = [...state.cars, ...newCars];
         }
         state.totalPages = action.payload.totalPages;
         state.isLoading = false;
