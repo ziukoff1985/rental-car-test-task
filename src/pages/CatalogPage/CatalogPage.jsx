@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectBrands,
@@ -30,17 +30,29 @@ const CatalogPage = () => {
   const brands = useSelector(selectBrands);
 
   // Використовуємо useRef для відстеження, чи був здійснений початковий запит
-  const initialFetchDone = useRef(false);
+  // const initialFetchDone = useRef(false);
 
-  // Замінюємо проблемний useEffect
+  // // Замінюємо проблемний useEffect
+  // useEffect(() => {
+  //   // Перевіряємо, чи запит ще не було здійснено
+  //   if (!initialFetchDone.current) {
+  //     dispatch(fetchCarsThunk({ page, filters }));
+  //     initialFetchDone.current = true;
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [dispatch]);
+
+  // Функція для перевірки, чи фільтри порожні
+  const areFiltersEmpty = filters =>
+    Object.values(filters).every(val => val === '');
+
+  // Виконуємо запит лише при першому завантаженні, якщо cars порожній
   useEffect(() => {
-    // Перевіряємо, чи запит ще не було здійснено
-    if (!initialFetchDone.current) {
-      dispatch(fetchCarsThunk({ page, filters }));
-      initialFetchDone.current = true;
+    if (cars.length === 0 && !isLoading && areFiltersEmpty(filters)) {
+      console.log('Initial fetch triggered', { page: 1, filters });
+      dispatch(fetchCarsThunk({ page: 1, filters }));
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch]);
+  }, [dispatch, cars.length, isLoading, filters]);
 
   useEffect(() => {
     if (!brands.length) {
