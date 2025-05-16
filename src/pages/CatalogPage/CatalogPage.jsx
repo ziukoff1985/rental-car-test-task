@@ -30,10 +30,11 @@ const CatalogPage = () => {
   const brands = useSelector(selectBrands);
 
   useEffect(() => {
-    // Виклик fetchCarsThunk відбувається лише при зміні page
-    dispatch(fetchCarsThunk({ page, filters }));
+    if (!cars.length && page === 1) {
+      dispatch(fetchCarsThunk({ page, filters }));
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, page]);
+  }, [dispatch, page, cars]);
 
   useEffect(() => {
     if (!brands.length) {
@@ -49,6 +50,7 @@ const CatalogPage = () => {
 
   const handleLoadMore = () => {
     dispatch(incrementPage());
+    dispatch(fetchCarsThunk({ page: page + 1, filters }));
   };
 
   return (
