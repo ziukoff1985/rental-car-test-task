@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  selectBrands,
   selectFilters,
   selectHasMoreCars,
   selectIsError,
@@ -26,6 +27,7 @@ const CatalogPage = () => {
   const hasMoreCars = useSelector(selectHasMoreCars);
   const filters = useSelector(selectFilters);
   const page = useSelector(selectPage);
+  const brands = useSelector(selectBrands);
 
   useEffect(() => {
     // Виклик fetchCarsThunk відбувається лише при зміні page
@@ -33,11 +35,11 @@ const CatalogPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, page]);
 
-  // const dispatch = useDispatch();
-
   useEffect(() => {
-    dispatch(fetchBrandsThunk());
-  }, [dispatch]);
+    if (!brands.length) {
+      dispatch(fetchBrandsThunk());
+    }
+  }, [dispatch, brands]);
 
   const handleSearch = () => {
     dispatch(resetCars());

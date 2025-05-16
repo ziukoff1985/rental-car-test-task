@@ -9,6 +9,15 @@
 
 ---
 
+## ✨ Key Features
+
+- Filter cars by brand, price, and mileage.
+- Add cars to your favorites and save them when you refresh.
+- Detailed information about the car with a booking form.
+- Pagination of the catalog through the 'Load More' button.
+
+---
+
 ## ⚙️ Technologies Used
 
 - [React](https://react.dev/) — Frontend library
@@ -23,7 +32,6 @@
 - [React Datepicker](https://reactdatepicker.com/) - Datepicker component
 - [React Hot Toast](https://react-hot-toast.com/) - Notification component
 - [Yup](https://github.com/jquense/yup) - Validation
-- [Date Fns](https://date-fns.org/) - Date manipulation
 
 ---
 

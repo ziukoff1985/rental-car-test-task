@@ -16,7 +16,7 @@ const persistConfig = {
   key: 'cars-data', // Змінено: унікальний ключ для вашого проєкту
   version: 1, // Додано: для майбутньої міграції
   storage,
-  whitelist: ['favorites'], // Змінено: зберігаємо лише favorites
+  whitelist: ['favorites', 'brands'], // Змінено: зберігаємо лише favorites
 };
 
 const persistedReducer = persistReducer(persistConfig, carsReducer);
