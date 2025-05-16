@@ -33,7 +33,6 @@ export const fetchCarsThunk = createAsyncThunk(
           maxMileage: filters.maxMileage || undefined,
         },
       });
-      console.log('Response:', response.data); // Додано для налагодження
       return {
         cars: response.data.cars || [],
         totalPages: response.data.totalPages || 0,

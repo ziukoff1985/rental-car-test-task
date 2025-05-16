@@ -49,10 +49,10 @@ const CatalogPage = () => {
   // Виконуємо запит лише при першому завантаженні, якщо cars порожній
   useEffect(() => {
     if (cars.length === 0 && !isLoading && areFiltersEmpty(filters)) {
-      console.log('Initial fetch triggered', { page: 1, filters });
-      dispatch(fetchCarsThunk({ page: 1, filters }));
+      dispatch(fetchCarsThunk({ page, filters }));
     }
-  }, [dispatch, cars.length, isLoading, filters]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, cars.length, isLoading]);
 
   useEffect(() => {
     if (!brands.length) {
