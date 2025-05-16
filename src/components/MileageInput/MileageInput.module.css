@@ -1,0 +1,57 @@
+.mileage {
+  display: flex;
+  gap: 0;
+  color: #101828;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.inputFrom {
+  background: #f7f7f7;
+  border: none;
+  border-right: 1px solid #dadde1;
+  border-radius: 12px 0 0 12px;
+  width: 160px;
+  height: 44px;
+  padding: 12px 16px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #101828;
+}
+
+.inputTo {
+  outline: none;
+  background: #f7f7f7;
+  border: none;
+  border-radius: 0 12px 12px 0;
+  width: 160px;
+  height: 44px;
+  padding: 12px 16px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #101828;
+}
+
+.inputFrom:focus,
+.inputTo:focus,
+.inputFrom:active,
+.inputTo:active {
+  outline: none;
+  border: none;
+  background-color: #f7f7f7;
+}
+
+.inputFrom:focus {
+  border-right: 1px solid #dadde1;
+}
+
+.inputFrom::placeholder,
+.inputTo::placeholder {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #101828;
+}

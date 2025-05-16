@@ -20,6 +20,66 @@
   color: #8d929a;
 }
 
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.searchButton,
+.clearButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  padding: 12px 51px;
+  width: 156px;
+  height: 44px;
+  background: #3470ff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.25;
+  transition: all 0.3s ease;
+}
+
+.clearButton {
+  background-color: transparent;
+  color: #2959c4; /* Синій текст */
+  border: 2px solid #dad6d6; /* Сіра рамка */
+}
+
+.searchButton:hover {
+  background: #2959c4;
+}
+
+.clearButton:hover {
+  background: #f7f7f7;
+}
+
+/* .filter {
+  padding: 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label span {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #8d929a;
+}
+
 .mileage {
   display: flex;
   gap: 0;
@@ -104,8 +164,8 @@
 
 .clearButton {
   background-color: transparent;
-  color: #2959c4; /* Синій текст */
-  border: 2px solid #dad6d6; /* Сіра рамка */
+  color: #2959c4; 
+  border: 2px solid #dad6d6; 
 }
 
 .searchButton:hover {
@@ -123,7 +183,7 @@
   align-items: center;
 }
 
-/* Це для правильної взаємодії з існуючими стилями */
+Це для правильної взаємодії з існуючими стилями
 .reactSelect {
   width: 100%;
-}
+} */
