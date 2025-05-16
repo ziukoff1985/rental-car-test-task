@@ -32,7 +32,7 @@ const CarDetails = () => {
         {isError && <p className={styles.error}>Error: {isError}</p>}
         {!car && !isLoading && <p className={styles.error}>Car not found</p>}
         {car && (
-          <>
+          <div className={styles.carDetailsContainer}>
             <div className={styles.leftColumn}>
               <img
                 src={car.img}
@@ -42,7 +42,7 @@ const CarDetails = () => {
               <RentalForm />
             </div>
             <CarDetailsInfoComp car={car} />
-          </>
+          </div>
         )}
       </div>
     </div>

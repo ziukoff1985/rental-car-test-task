@@ -1,5 +1,4 @@
 .rightColumn {
-  flex: 1;
   max-width: 488px;
 }
 
@@ -93,8 +92,8 @@
   margin-bottom: 0;
 }
 
-@media (min-width: 1024px) {
+/* @media (min-width: 1024px) {
   .rightColumn {
     flex: 0 0 50%;
   }
-}
+} */
