@@ -37,10 +37,10 @@
   width: 160px;
   height: 44px;
   padding: 12px 16px;
-  /* font-weight: 500;
+  font-weight: 500;
   font-size: 16px;
   line-height: 1.25;
-  color: #101828; */
+  color: #101828;
 }
 
 .inputTo {
@@ -51,9 +51,10 @@
   width: 160px;
   height: 44px;
   padding: 12px 16px;
-  /* font-weight: 500;
+  font-weight: 500;
   font-size: 16px;
-  line-height: 1.25; */
+  line-height: 1.25;
+  color: #101828;
 }
 
 .inputFrom:focus,
@@ -67,6 +68,14 @@
 
 .inputFrom:focus {
   border-right: 1px solid #dadde1;
+}
+
+.inputFrom::placeholder,
+.inputTo::placeholder {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #101828;
 }
 
 .buttons {
