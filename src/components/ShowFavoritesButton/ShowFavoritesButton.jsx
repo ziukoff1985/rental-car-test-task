@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { selectFavorites } from '../../redux/cars/selectors.js';
 import { NavLink } from 'react-router-dom';
-import sprite from '../../assets/images/icons.svg';
+import sprite from '../../assets/images/svg-icons-sprite.svg';
 import styles from './ShowFavoritesButton.module.css';
 
 const ShowFavoritesButton = () => {

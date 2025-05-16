@@ -20,33 +20,6 @@
   color: #8d929a;
 }
 
-.selectWrapper {
-  position: relative;
-}
-
-.select {
-  background: #f7f7f7;
-  border: none;
-  border-radius: 12px;
-  padding: 12px 40px 12px 16px; /* Додано padding-right для відступу стрілочки */
-  width: 204px;
-  height: 44px;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.25;
-  color: #101828;
-  cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
-.select:focus {
-  outline: none;
-  border: none;
-  background-color: #f1f1f1;
-}
-
 .mileage {
   display: flex;
   gap: 0;
@@ -134,24 +107,12 @@
   background: #f7f7f7;
 }
 
-input:focus,
-select:focus,
-button:focus {
-  outline: none !important;
+.icon {
+  fill: #101828;
+  transition: transform 5s ease;
 }
 
-/* Це для правильної взаємодії з вашими існуючими стилями */
+/* Це для правильної взаємодії з існуючими стилями */
 .reactSelect {
   width: 100%;
 }
-
-/* Приховуємо стандартну стрілочку, оскільки ви маєте власну в .selectWrapper::after */
-/* .selectWrapper .react-select__dropdown-indicator svg {
-  display: none;
-} */
-
-/* Позиціювання після-елемента відносно новий компонент Select */
-/* .selectWrapper::after {
-  right: 16px;
-  z-index: 1;
-} */
