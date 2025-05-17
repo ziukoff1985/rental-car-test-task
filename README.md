@@ -72,7 +72,7 @@ npm run dev
 
 ## Author
 
-[Borys Ziukov](www.linkedin.com/in/borys-ziukov)
+[Borys Ziukov](https://www.linkedin.com/in/borys-ziukov/)
 
 ---
 
