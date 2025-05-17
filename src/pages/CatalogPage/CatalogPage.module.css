@@ -20,7 +20,7 @@
   -webkit-backdrop-filter: blur(8px); /* для Safari */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
-  padding: 1rem;
+  /* padding: 1rem; */
   z-index: 1000;
   width: calc(
     100% - 240px
