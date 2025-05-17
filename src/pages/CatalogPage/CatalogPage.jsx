@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectBrands,
@@ -29,6 +29,45 @@ const CatalogPage = () => {
   const page = useSelector(selectPage);
   const brands = useSelector(selectBrands);
 
+  // ВИПРАВЛЕННЯ: Замінили isScrollingUp на більш зрозумілий showFloatingFilter
+  const [showFloatingFilter, setShowFloatingFilter] = useState(false);
+  // ВИПРАВЛЕННЯ: Використовуємо useRef для ефективнішого відстеження скролу
+  const lastScrollY = useRef(0);
+  // ВИПРАВЛЕННЯ: Додаємо пряме посилання на DOM-елемент фільтра
+  const filterRef = useRef(null);
+  // Додаємо новий стан для відстеження завантаження через кнопку
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Якщо зараз завантажуємо більше машин через кнопку, не показуємо фільтр
+      if (isLoadingMore) return;
+
+      const currentScrollY = window.scrollY;
+
+      // ВИПРАВЛЕННЯ: Перевіряємо чи фільтр вже вийшов за межі видимої області
+      const filterIsOutOfView =
+        filterRef.current &&
+        filterRef.current.getBoundingClientRect().bottom < 0;
+
+      // ВИПРАВЛЕННЯ 2.0: Спростили логіку для більш надійної роботи з повільними скролами
+      // Якщо рухаємося вгору (будь-яка швидкість) І фільтр не видно - показуємо плаваючий фільтр
+      if (currentScrollY < lastScrollY.current && filterIsOutOfView) {
+        // Затримки не має - фільтр з'являється відразу при будь-якому скролі вгору
+        setShowFloatingFilter(true);
+      }
+      // Якщо рухаємося вниз або фільтр знову став видимим - ховаємо плаваючий фільтр
+      else if (currentScrollY > lastScrollY.current || !filterIsOutOfView) {
+        setShowFloatingFilter(false);
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isLoadingMore]); // Додаємо залежність isLoadingMore
+
   // Функція для перевірки, чи фільтри порожні
   const areFiltersEmpty = filters =>
     Object.values(filters).every(val => val === '');
@@ -49,20 +88,44 @@ const CatalogPage = () => {
     }
   }, [dispatch, brands]);
 
+  // Додаємо ефект для скидання isLoadingMore після завершення завантаження
+  useEffect(() => {
+    if (!isLoading && isLoadingMore) {
+      setIsLoadingMore(false);
+    }
+  }, [isLoading, isLoadingMore]);
+
   const handleSearch = () => {
     dispatch(resetCars());
     dispatch(setPage(1));
     dispatch(fetchCarsThunk({ page: 1, filters }));
+    // ВИПРАВЛЕННЯ: Приховуємо плаваючий фільтр після пошуку
+    setShowFloatingFilter(false);
   };
 
   const handleLoadMore = () => {
+    // Встановлюємо прапорець, щоб заблокувати появу фільтра
+    setIsLoadingMore(true);
+    // Ховаємо плаваючий фільтр
+    setShowFloatingFilter(false);
+
     dispatch(incrementPage());
     dispatch(fetchCarsThunk({ page: page + 1, filters }));
   };
 
   return (
     <div className={styles.container}>
-      <Filter onSearch={handleSearch} />
+      {/* ВИПРАВЛЕННЯ: Додаємо ref до контейнера фільтра */}
+      <div ref={filterRef} className={styles.filterContainer}>
+        <Filter onSearch={handleSearch} />
+      </div>
+
+      {/* ВИПРАВЛЕННЯ: Окремий плаваючий фільтр, що з'являється умовно */}
+      {showFloatingFilter && (
+        <div className={styles.floatingFilter}>
+          <Filter onSearch={handleSearch} />
+        </div>
+      )}
       {!isLoading && cars.length === 0 && (
         <>
           <p className={styles.noResults}>No results found</p>

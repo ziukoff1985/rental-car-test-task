@@ -2,6 +2,37 @@
   padding: 32px 120px;
 }
 
+.filterContainer {
+  margin-bottom: 2rem;
+  /* ВИПРАВЛЕННЯ: Додаємо z-index меншим за плаваючий фільтр */
+  position: relative;
+  z-index: 1;
+}
+
+.floatingFilter {
+  position: fixed;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  /* ВИПРАВЛЕННЯ 2.0: Замінюємо білий фон на напівпрозорий з ефектом розмиття */
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px); /* для Safari */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 1rem;
+  z-index: 1000;
+  width: calc(
+    100% - 240px
+  ); /* ВИПРАВЛЕННЯ: Підлаштовуємо під padding контейнера */
+  /* ВИПРАВЛЕННЯ: Покращуємо анімацію появи/зникнення */
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  /* ВИПРАВЛЕННЯ: Обмежуємо максимальну ширину плаваючого фільтра */
+  max-width: 1200px;
+}
+
 .gridContainer {
   min-height: 100px; /* Забезпечуємо мінімальну висоту, щоб уникнути коливань */
 }
@@ -48,4 +79,18 @@
 
 .loadMoreButton:hover {
   border: 1px solid #0b44cd;
+}
+
+/* ВИПРАВЛЕННЯ: Додаємо медіа-запит для мобільних пристроїв */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px 16px;
+  }
+
+  .floatingFilter {
+    width: calc(100% - 32px);
+    padding: 0.75rem;
+    /* ВИПРАВЛЕННЯ 2.0: Збільшуємо прозорість на мобільних для кращої видимості контенту позаду */
+    background: rgba(255, 255, 255, 0.9);
+  }
 }

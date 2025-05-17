@@ -14,7 +14,7 @@ const debouncedSetFilters = debounce((values, dispatch) => {
   dispatch(setFilters(values));
 }, 300);
 
-const Filter = ({ onSearch }) => {
+const Filter = ({ onSearch, className }) => {
   const dispatch = useDispatch();
   const brands = useSelector(selectBrands);
   const filters = useSelector(selectFilters);
@@ -51,7 +51,7 @@ const Filter = ({ onSearch }) => {
   }));
 
   return (
-    <div className={styles.filter}>
+    <div className={`${styles.filter} ${className || ''}`}>
       <label className={styles.label}>
         <span>Car brand</span>
         <FilterSelect
