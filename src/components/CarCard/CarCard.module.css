@@ -2,7 +2,6 @@
   display: inline-flex; /* гарантує, що і текст, і іконка будуть разом */
   align-items: center;
   white-space: nowrap; /* забороняє перенос всередині */
-  /* gap: 4px; відстань між текстом і іконкою */
 }
 
 .card {
@@ -17,7 +16,6 @@
 .card:hover {
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
   scale: 1.02;
-  /* transform: translateY(6px); */
 }
 
 .image {
@@ -77,7 +75,7 @@
   font-size: 12px;
   color: #8d929a;
   flex-wrap: wrap;
-  word-break: break-word; /* дозволяє перенос */
+  word-break: break-word; /* дозволяє перенос і розриватися посередині слова */
 }
 
 .separator {

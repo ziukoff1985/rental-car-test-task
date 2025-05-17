@@ -9,6 +9,6 @@
   width: 100vw; /* займаємо всю ширину viewport */
   height: 100vh; /* займаємо всю висоту viewport */
   background-color: rgba(255, 255, 255, 0.9); /* Напівпрозорий фон */
-  z-index: 1000; /* лоадер поверх інших елементів */
+  z-index: 1000;
   transform: none; /* прибираємо translate, бо оверлей займає всю область */
 }

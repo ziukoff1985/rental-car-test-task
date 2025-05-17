@@ -4,7 +4,6 @@ import {
   selectBrands,
   selectFilters,
   selectHasMoreCars,
-  selectIsError,
   selectIsLoading,
   selectPage,
   selectVisibleCars,
@@ -23,34 +22,31 @@ const CatalogPage = () => {
   const dispatch = useDispatch();
   const cars = useSelector(selectVisibleCars);
   const isLoading = useSelector(selectIsLoading);
-  const isError = useSelector(selectIsError);
   const hasMoreCars = useSelector(selectHasMoreCars);
   const filters = useSelector(selectFilters);
   const page = useSelector(selectPage);
   const brands = useSelector(selectBrands);
 
-  // ВИПРАВЛЕННЯ: Замінили isScrollingUp на більш зрозумілий showFloatingFilter
   const [showFloatingFilter, setShowFloatingFilter] = useState(false);
-  // ВИПРАВЛЕННЯ: Використовуємо useRef для ефективнішого відстеження скролу
+  // useRef для відстеження скролу
   const lastScrollY = useRef(0);
-  // ВИПРАВЛЕННЯ: Додаємо пряме посилання на DOM-елемент фільтра
+  // пряме посилання на DOM-елемент фільтра
   const filterRef = useRef(null);
-  // Додаємо новий стан для відстеження завантаження через кнопку
+  // новий стан для відстеження завантаження через кнопку
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Якщо зараз завантажуємо більше машин через кнопку, не показуємо фільтр
+      // Якщо завантажуємо через кнопку, не показуємо фільтр
       if (isLoadingMore) return;
 
       const currentScrollY = window.scrollY;
 
-      // ВИПРАВЛЕННЯ: Перевіряємо чи фільтр вже вийшов за межі видимої області
+      // Перевіряємо чи фільтр вже вийшов за межі видимої області
       const filterIsOutOfView =
         filterRef.current &&
         filterRef.current.getBoundingClientRect().bottom < 0;
 
-      // ВИПРАВЛЕННЯ 2.0: Спростили логіку для більш надійної роботи з повільними скролами
       // Якщо рухаємося вгору (будь-яка швидкість) І фільтр не видно - показуємо плаваючий фільтр
       if (currentScrollY < lastScrollY.current && filterIsOutOfView) {
         // Затримки не має - фільтр з'являється відразу при будь-якому скролі вгору
@@ -66,7 +62,7 @@ const CatalogPage = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isLoadingMore]); // Додаємо залежність isLoadingMore
+  }, [isLoadingMore]); 
 
   // Функція для перевірки, чи фільтри порожні
   const areFiltersEmpty = filters =>
@@ -99,7 +95,7 @@ const CatalogPage = () => {
     dispatch(resetCars());
     dispatch(setPage(1));
     dispatch(fetchCarsThunk({ page: 1, filters }));
-    // ВИПРАВЛЕННЯ: Приховуємо плаваючий фільтр після пошуку
+    // Приховуємо плаваючий фільтр після пошуку
     setShowFloatingFilter(false);
   };
 
@@ -115,12 +111,12 @@ const CatalogPage = () => {
 
   return (
     <div className={styles.container}>
-      {/* ВИПРАВЛЕННЯ: Додаємо ref до контейнера фільтра */}
+      {/* Додаємо ref до контейнера фільтра */}
       <div ref={filterRef} className={styles.filterContainer}>
         <Filter onSearch={handleSearch} />
       </div>
 
-      {/* ВИПРАВЛЕННЯ: Окремий плаваючий фільтр, що з'являється умовно */}
+      {/* Окремий плаваючий фільтр, що з'являється умовно */}
       {showFloatingFilter && (
         <div className={styles.floatingFilter}>
           <Filter onSearch={handleSearch} />
@@ -135,7 +131,6 @@ const CatalogPage = () => {
         </>
       )}
       {isLoading && <Loader loading={isLoading} />}
-      {isError && <p className={styles.error}>Error: {isError}</p>}
       <div className={styles.gridContainer}>
         <div className={styles.grid}>
           {cars.map(car => (
