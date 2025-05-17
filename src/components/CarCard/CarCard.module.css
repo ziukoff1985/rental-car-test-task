@@ -1,3 +1,10 @@
+.inlineGroup {
+  display: inline-flex; /* гарантує, що і текст, і іконка будуть разом */
+  align-items: center;
+  white-space: nowrap; /* забороняє перенос всередині */
+  gap: 4px; /* відстань між текстом і іконкою */
+}
+
 .card {
   width: 276px;
   border-radius: 14px;
@@ -69,6 +76,8 @@
   font-weight: 400;
   font-size: 12px;
   color: #8d929a;
+  flex-wrap: wrap;
+  word-break: break-word; /* дозволяє перенос */
 }
 
 .separator {
