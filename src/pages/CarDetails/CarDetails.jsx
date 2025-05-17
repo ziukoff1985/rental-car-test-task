@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import {
   selectCurrentCar,
   selectIsLoading,
+  selectIsError,
 } from '../../redux/cars/selectors.js';
 import { fetchCarByIdThunk } from '../../redux/cars/operations.js';
 import RentalForm from '../../components/RentalForm/RentalForm.jsx';
@@ -16,6 +17,7 @@ const CarDetails = () => {
   const dispatch = useDispatch();
   const car = useSelector(selectCurrentCar);
   const isLoading = useSelector(selectIsLoading);
+  const isError = useSelector(selectIsError);
 
   useEffect(() => {
     if (id) {
@@ -27,6 +29,11 @@ const CarDetails = () => {
     <div>
       {isLoading && <Loader loading={isLoading} />}
       <div className={styles.container}>
+        {isError && (
+          <p className={styles.error}>
+            Something went wrong, please try again later
+          </p>
+        )}
         {!car && !isLoading && <p className={styles.error}>Car not found</p>}
         {car && (
           <div className={styles.carDetailsContainer}>

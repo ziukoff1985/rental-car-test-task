@@ -4,6 +4,7 @@ import {
   selectBrands,
   selectFilters,
   selectHasMoreCars,
+  selectIsError,
   selectIsLoading,
   selectPage,
   selectVisibleCars,
@@ -22,11 +23,13 @@ const CatalogPage = () => {
   const dispatch = useDispatch();
   const cars = useSelector(selectVisibleCars);
   const isLoading = useSelector(selectIsLoading);
+  const isError = useSelector(selectIsError);
   const hasMoreCars = useSelector(selectHasMoreCars);
   const filters = useSelector(selectFilters);
   const page = useSelector(selectPage);
   const brands = useSelector(selectBrands);
 
+  // Додаємо новий стан для відстеження видимості плаваючого фільтра
   const [showFloatingFilter, setShowFloatingFilter] = useState(false);
   // useRef для відстеження скролу
   const lastScrollY = useRef(0);
@@ -62,7 +65,7 @@ const CatalogPage = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isLoadingMore]); 
+  }, [isLoadingMore]);
 
   // Функція для перевірки, чи фільтри порожні
   const areFiltersEmpty = filters =>
@@ -131,6 +134,11 @@ const CatalogPage = () => {
         </>
       )}
       {isLoading && <Loader loading={isLoading} />}
+      {isError && (
+        <p className={styles.error}>
+          An error occurred while fetching cars. Please try again later.
+        </p>
+      )}
       <div className={styles.gridContainer}>
         <div className={styles.grid}>
           {cars.map(car => (

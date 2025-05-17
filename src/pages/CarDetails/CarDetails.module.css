@@ -24,6 +24,8 @@
 }
 
 .error {
+  display: block;
+  margin: 8px auto 0;
   color: #ff0000;
   text-align: center;
   padding: 2rem;
