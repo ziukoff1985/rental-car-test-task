@@ -1,10 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
-import Layout from './components/Layout/Layout.jsx';
-// import HomePage from './pages/HomePage/HomePage.jsx';
-// import CatalogPage from './pages/CatalogPage/CatalogPage.jsx';
-// import CarDetails from './pages/CarDetails/CarDetails.jsx';
-// import FavoritesPage from './pages/FavoritesPage/FavoritesPage.jsx';
 import { lazy, Suspense } from 'react';
+import Layout from './components/Layout/Layout.jsx';
 import Loader from './components/Loader/Loader.jsx';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));

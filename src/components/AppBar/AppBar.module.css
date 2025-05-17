@@ -30,30 +30,9 @@
   color: #101828;
   font-weight: 500;
   font-size: 16px;
-  /* line-height: 1.25; */
   transition: color 0.3s ease;
 }
 
 .link:hover {
   color: #3470ff;
-}
-
-@media screen and (max-width: 768px) {
-  .header {
-    min-height: 23vh;
-    padding: 26px 32px;
-    flex-direction: column;
-  }
-
-  .nav {
-    gap: 30px;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-  .link,
-  .active {
-    font-weight: 500;
-    font-size: 18px;
-  }
 }

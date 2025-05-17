@@ -13,7 +13,6 @@
   line-height: 1.33333;
   color: #101828;
   margin-bottom: 8px;
-  margin-top: 20px;
 }
 
 .carId {
@@ -66,7 +65,7 @@
 .carListWrapContainer {
   display: flex;
   flex-direction: column;
-  gap: 87px;
+  gap: 90px;
 }
 
 .carSubtitle {
@@ -91,9 +90,3 @@
 .carListItem:last-child {
   margin-bottom: 0;
 }
-
-/* @media (min-width: 1024px) {
-  .rightColumn {
-    flex: 0 0 50%;
-  }
-} */

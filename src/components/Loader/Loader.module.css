@@ -3,12 +3,12 @@
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  position: fixed; /* Залишаємо fixed для прив'язки до viewport */
+  position: fixed; /* fixed для прив'язки до viewport */
   top: 0;
   left: 0;
-  width: 100vw; /* Змінено: займаємо всю ширину viewport */
-  height: 100vh; /* Змінено: займаємо всю висоту viewport */
+  width: 100vw; /* займаємо всю ширину viewport */
+  height: 100vh; /* займаємо всю висоту viewport */
   background-color: rgba(255, 255, 255, 0.9); /* Напівпрозорий фон */
-  z-index: 1000; /* Забезпечуємо, що лоадер поверх інших елементів */
-  transform: none; /* Змінено: прибираємо translate, бо оверлей займає всю область */
+  z-index: 1000; /* лоадер поверх інших елементів */
+  transform: none; /* прибираємо translate, бо оверлей займає всю область */
 }

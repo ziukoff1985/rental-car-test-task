@@ -13,10 +13,10 @@ import storage from 'redux-persist/lib/storage';
 import { carsReducer } from './cars/slice.js';
 
 const persistConfig = {
-  key: 'cars-data', // Змінено: унікальний ключ для вашого проєкту
-  version: 1, // Додано: для майбутньої міграції
+  key: 'cars-data', // ключ - назва в localStorage
+  version: 1,
   storage,
-  whitelist: ['favorites', 'brands'], // Змінено: зберігаємо лише favorites
+  whitelist: ['favorites', 'brands'], // зберігаємо favorites та brands в localStorage
 };
 
 const persistedReducer = persistReducer(persistConfig, carsReducer);
@@ -28,7 +28,7 @@ export const store = configureStore({
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER], // Змінено: ігноруємо всі дії
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
 });

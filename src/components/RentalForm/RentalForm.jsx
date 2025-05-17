@@ -22,7 +22,7 @@ const RentalForm = () => {
     // Форматуємо дані
     const formattedData = formatFormData(values);
 
-    // Використовуємо переокремлений компонент для toast
+    // toast для нотифікації
     toast.success(
       <ToastFormNotification
         title="Rental request submitted:"

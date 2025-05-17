@@ -8,7 +8,7 @@ import sprite from '../../assets/images/svg-icons-sprite.svg';
 const CarCard = ({ car }) => {
   const dispatch = useDispatch();
   const favorites = useSelector(selectFavorites);
-  const isFavorite = favorites.some(item => item.id === car.id); // Змінено: перевіряємо об'єкти
+  const isFavorite = favorites.some(item => item.id === car.id);
 
   const handleToggleFavorite = () => {
     dispatch(addOrRemoveFromFavorites(car));

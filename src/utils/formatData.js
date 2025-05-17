@@ -1,3 +1,5 @@
+// Функція для форматування даних форми перед відправкою на сервер
+// Використовується для перетворення дати у формат YYYY-MM-DD
 export const formatFormData = values => {
   return Object.entries(values).reduce((acc, [key, value]) => {
     // Обробка дати, якщо потрібно

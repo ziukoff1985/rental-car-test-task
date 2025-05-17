@@ -23,17 +23,8 @@ export const selectHasMoreCars = createSelector(
 export const selectVisibleCars = createSelector(
   [selectCars, selectFavorites, selectShowFavorites],
   (cars, favorites, showFavorites) => {
-    // Змінено: коректна фільтрація, враховуючи, що favorites - масив об'єктів
+    // favorites - масив об'єктів
     if (!showFavorites) return cars;
     return cars.filter(car => favorites.some(fav => fav.id === car.id));
   }
 );
-
-// // Мемоізований селектор для відфільтрованих автомобілів
-// export const selectVisibleCars = createSelector(
-//   [selectCars, selectFavorites, selectShowFavorites],
-//   (cars, favorites, showFavorites) => {
-//     if (!showFavorites) return cars;
-//     return cars.filter((car) => favorites.includes(car.id));
-//   }
-// );

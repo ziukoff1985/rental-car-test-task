@@ -11,7 +11,7 @@
   color: #fff;
 }
 
-/* Для екранів із високою щільністю пікселів (Retina) */
+/* Для екранів Retina */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .hero {
     background: url('../../assets/images/hero-bg-2x.jpg') no-repeat center/cover;

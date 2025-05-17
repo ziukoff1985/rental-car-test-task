@@ -1,7 +1,9 @@
 import { NumberFormatBase } from 'react-number-format';
 import styles from './MileageInput.module.css';
 
+
 const MileageInput = ({ minMileage, maxMileage, onChange, dispatch }) => {
+  // formatMinMileage, formatMaxMileage - форматують значення пробігу у вигляді "From 1,000"
   const formatMinMileage = numStr => {
     if (numStr === '' || numStr === undefined) return '';
     return `From ${new Intl.NumberFormat('en-US', {

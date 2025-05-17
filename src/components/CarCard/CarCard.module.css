@@ -2,7 +2,6 @@
   width: 276px;
   border-radius: 14px;
   overflow: hidden;
-  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
   border: none;
   position: relative;
   transition: all 0.3s ease;
@@ -11,8 +10,7 @@
 .card:hover {
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
   scale: 1.02;
-  transform: translateY(6px);
-  /* outline: 1px solid #a7a7a7; */
+  /* transform: translateY(6px); */
 }
 
 .image {
@@ -70,15 +68,13 @@
   margin: auto 0 0;
   font-weight: 400;
   font-size: 12px;
-  /* line-height: 1.33333; */
   color: #8d929a;
 }
 
 .separator {
   color: #dadde1;
-  /* font-weight: bold; */
   font-size: 16px;
-  padding: 0 4px; /* Пробіли ліворуч і праворуч */
+  padding: 0 4px;
 }
 
 .favoriteButton {

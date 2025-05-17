@@ -1,5 +1,5 @@
-/* додайте цей файл у той самий каталог, що й ваш компонент */
-/* datepicker-override.css */
+/* Стилізація компонента DatePicker з бібліотеки react-datepicker */
+/* Глобальні стилі, цей файл обов'язковий*/
 
 .custom-datepicker {
   background-color: white !important;
