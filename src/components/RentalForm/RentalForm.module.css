@@ -73,3 +73,53 @@
   width: 576px;
   position: relative;
 }
+
+/* =================== */
+/* 📲 Планшети */
+/* =================== */
+@media (max-width: 1023px) {
+  .formSection {
+    width: 100%;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  .input,
+  .textarea,
+  .datePickerWrapper {
+    width: 100%;
+  }
+}
+
+/* =================== */
+/* 📱 Мобільні */
+/* =================== */
+@media (max-width: 767px) {
+  .formSection {
+    padding: 20px;
+  }
+
+  .formSection h3 {
+    font-size: 16px;
+  }
+
+  .formSection p {
+    font-size: 13px;
+  }
+
+  .input,
+  .textarea {
+    font-size: 13px;
+    padding: 10px 16px;
+    height: 44px;
+  }
+
+  .textarea {
+    height: 80px;
+  }
+
+  .rentalButton {
+    padding: 10px 40px;
+    font-size: 13px;
+  }
+}

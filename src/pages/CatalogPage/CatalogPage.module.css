@@ -91,3 +91,52 @@
     ); /* Збільшуємо прозорість на мобільних для кращої видимості контенту позаду */
   }
 }
+
+/* ============ 💻 Планшети ============ */
+@media (max-width: 1023px) {
+  .container {
+    padding: 24px 32px;
+  }
+
+  .floatingFilter {
+    width: calc(100% - 64px);
+    padding: 0.9rem;
+    max-width: none;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    row-gap: 40px;
+  }
+
+  .loadMoreButton {
+    font-size: 15px;
+    padding: 12px 24px;
+  }
+}
+
+/* ============ 📱 Мобільні ============ */
+@media (max-width: 767px) {
+  .container {
+    padding: 16px 16px;
+  }
+
+  .floatingFilter {
+    top: 60px;
+    width: calc(100% - 32px);
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.9);
+    max-width: none;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    row-gap: 32px;
+  }
+
+  .loadMoreButton {
+    width: 100%;
+    padding: 12px 0;
+    font-size: 14px;
+  }
+}
