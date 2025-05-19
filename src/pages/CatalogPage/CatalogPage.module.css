@@ -122,7 +122,7 @@
   }
 
   .floatingFilter {
-    top: 60px;
+    top: 50px;
     width: calc(100% - 32px);
     padding: 0.75rem;
     background: rgba(255, 255, 255, 0.9);
