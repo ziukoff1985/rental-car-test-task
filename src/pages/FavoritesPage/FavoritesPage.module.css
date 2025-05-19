@@ -42,3 +42,54 @@
   font-size: 16px;
   color: #666;
 }
+
+/* =================== */
+/* 📲 Планшети */
+/* =================== */
+@media (max-width: 1023px) {
+  .container {
+    padding: 24px 40px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .grid {
+    gap: 16px;
+  }
+}
+
+/* =================== */
+/* 📱 Мобільні */
+/* =================== */
+@media (max-width: 767px) {
+  .container {
+    padding: 16px 20px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: сenter;
+    gap: 12px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .clearButton {
+    font-size: 13px;
+    padding: 6px 14px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .noCars,
+  .error {
+    font-size: 14px;
+  }
+}

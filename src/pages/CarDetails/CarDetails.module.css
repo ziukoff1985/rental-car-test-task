@@ -11,7 +11,9 @@
 }
 
 .leftColumn {
-  flex: 1;
+  /* flex: 1; */
+  display: flex;
+  flex-direction: column;
   margin-right: 72px;
 }
 
@@ -31,11 +33,45 @@
   padding: 2rem;
 }
 
-@media (min-width: 1024px) {
-  .container {
-    flex-direction: row;
+/* =================== */
+/* 📲 Планшети */
+/* =================== */
+@media (max-width: 1023px) {
+  .carDetailsContainer {
+    flex-direction: column;
+    align-items: center;
   }
+
   .leftColumn {
-    flex: 0 0 50%;
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .image {
+    width: 100%;
+    height: auto;
+  }
+
+  .container {
+    padding: 60px 20px;
+  }
+}
+
+/* =================== */
+/* 📱 Мобільні */
+/* =================== */
+@media (max-width: 767px) {
+  .container {
+    padding: 40px 16px;
+  }
+
+  .image {
+    border-radius: 12px;
+    margin-bottom: 24px;
+  }
+
+  .error {
+    padding: 1rem;
+    font-size: 14px;
   }
 }

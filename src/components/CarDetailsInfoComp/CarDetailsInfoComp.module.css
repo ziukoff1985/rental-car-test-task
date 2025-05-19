@@ -90,3 +90,74 @@
 .carListItem:last-child {
   margin-bottom: 0;
 }
+
+/* =================== */
+/* 📲 Планшети */
+/* =================== */
+@media (max-width: 1023px) {
+  .rightColumn {
+    max-width: 100%;
+  }
+
+  .carListWrapContainer {
+    gap: 60px;
+  }
+
+  .carDescription {
+    margin-bottom: 40px;
+  }
+
+  .carPrice {
+    margin-bottom: 24px;
+  }
+}
+
+/* =================== */
+/* 📱 Мобільні */
+/* =================== */
+@media (max-width: 767px) {
+  .carTitle {
+    font-size: 20px;
+  }
+
+  .carId {
+    font-size: 14px;
+  }
+
+  .carPrice {
+    font-size: 32px;
+  }
+
+  .carDescription {
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+
+  .carSubtitle {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .carListItem {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  .carMileage {
+    margin-left: 0;
+    font-size: 14px;
+  }
+
+  .carListWrapContainer {
+    gap: 30px;
+  }
+
+  .location {
+    font-size: 14px;
+  }
+
+  .icon {
+    width: 14px;
+    height: 14px;
+  }
+}
