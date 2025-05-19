@@ -104,10 +104,10 @@
     max-width: none;
   }
 
-  .grid {
+  /* .grid {
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     row-gap: 40px;
-  }
+  } */
 
   .loadMoreButton {
     font-size: 15px;
@@ -129,10 +129,10 @@
     max-width: none;
   }
 
-  .grid {
+  /* .grid {
     grid-template-columns: 1fr;
     row-gap: 32px;
-  }
+  } */
 
   .loadMoreButton {
     width: 100%;

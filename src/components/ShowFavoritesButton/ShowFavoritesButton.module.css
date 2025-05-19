@@ -28,3 +28,18 @@
   display: flex;
   align-items: center;
 }
+
+/* =================== */
+/* 📱 Мобільні */
+/* =================== */
+@media (max-width: 767px) {
+  .btn {
+    font-size: 16px;
+    align-items: center;
+  }
+  .icon {
+    width: 16px;
+    height: 16px;
+    display: inline-flex; /* 👈 або block — щоб вирівнювався всередині flex */
+  }
+}
