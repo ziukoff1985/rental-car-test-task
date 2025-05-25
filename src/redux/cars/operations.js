@@ -6,6 +6,7 @@ const API = axios.create({
 });
 
 // Отримання списку брендів
+// Повертає -> масив з брендами автомобілів
 export const fetchBrandsThunk = createAsyncThunk(
   'cars/fetchBrands',
   async (_, thunkAPI) => {
@@ -19,6 +20,7 @@ export const fetchBrandsThunk = createAsyncThunk(
 );
 
 // Отримання списку автомобілів із пагінацією та фільтрами
+// Повертає -> масив з об'єктами автомобілів + totalPages + page + totalCars
 export const fetchCarsThunk = createAsyncThunk(
   'cars/fetchCars',
   async ({ page = 1, filters = {} }, thunkAPI) => {
@@ -44,6 +46,7 @@ export const fetchCarsThunk = createAsyncThunk(
 );
 
 // Отримання деталей автомобіля за ID
+// Повертає -> об'єкт з деталями про конкретний автомобіль
 export const fetchCarByIdThunk = createAsyncThunk(
   'cars/fetchCarById',
   async (id, thunkAPI) => {
