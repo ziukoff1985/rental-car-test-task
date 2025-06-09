@@ -5,6 +5,7 @@ import { selectFavorites } from '../../redux/cars/selectors.js';
 import styles from './CarCard.module.css';
 import sprite from '../../assets/images/svg-icons-sprite.svg';
 
+// Компонент для відображення картки автомобіля
 const CarCard = ({ car }) => {
   const dispatch = useDispatch();
   const favorites = useSelector(selectFavorites);
