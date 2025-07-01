@@ -10,6 +10,7 @@ const FavoritesPage = lazy(() =>
   import('./pages/FavoritesPage/FavoritesPage.jsx')
 );
 
+// Головний компонент застосунку
 function App() {
   return (
     <Suspense fallback={<Loader loading={true} />}>
